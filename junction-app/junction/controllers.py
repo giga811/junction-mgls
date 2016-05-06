@@ -20,6 +20,10 @@ from junction import app
 def hello():
     return render_template('index.html')
 
+@app.route("/status/:ticketid", methods=['GET'])
+def status():
+    return render_template('status.html', ticketid=ticketid)
+
 # api
 @app.route("/api/test")
 def get_sensor():
