@@ -71,3 +71,6 @@ target/
 *.db
 *.sqlite
 *.idea
+
+# node js modules
+beacon/node_modules/*
