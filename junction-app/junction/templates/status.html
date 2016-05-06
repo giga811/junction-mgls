@@ -48,17 +48,20 @@
             type: "GET",
             url: "/api/chunag?ticket_id="+"t123",
         }).done(function (data) {
-            console.log(data);
+            dic = JSON.parse(data);
+            console.log(dic);
             for (var i=0; i<4; i++)
-                $("#"+i).attr("src", "img/going.png");
-            $("#"+data.last_checkpoint_id).attr("src", "img/stopped.png");
-            if (data.last_checkpoint_id===3){
+                $("#image"+i).attr("src", "img/going.png");
+            $("#image"+dic.last_checkpoint_id).attr("src", "img/stopped.png");
+            if (dic.last_checkpoint_id==3){
                 window.alert("ARRIVED!");
             }
         });  
     };
-
-    var interval = 1000 * 30; // where X is your every X minutes
-    setInterval(ajax_call, interval);
+    $(document).ready(function(){
+        ajax_call();
+        var interval = 1000 * 30; // where X is your every X minutes
+        setInterval(ajax_call, interval);
+    });
 </script>
 {% endblock %}
