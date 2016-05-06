@@ -1,8 +1,8 @@
-drop table if exists user;
-create table user (
-  user_id integer primary key autoincrement,
-  username text not null,
-  email text not null,
-  pw_hash text not null,
-  country text not null
+drop table if exists status;
+create table status (
+  status_id integer primary key autoincrement,
+  ticket_id text not null,
+  beacon_id text not null,
+  last_checkpoint_id text not null,
+  timestamp datetime not null
 );
