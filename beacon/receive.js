@@ -1,5 +1,4 @@
 var request = require('request');
-var sleep = require('sleep');
 
 
 // variables
@@ -39,7 +38,7 @@ Bleacon.on('discover', function(bleacon) {
    // sleep.sleep(3);
 
     var options = {
-      uri: 'http://amarzanashir.com/getBeacon.php?checkpoint=' + checkpoint + '&uuid=' + bleacon.uuid,
+      uri: 'http://192.168.179.3:5000/api/beacon?last_checkpoint_id=' + checkpoint + '&beacon_id=' + bleacon.uuid,
       form: { name: 'テストユーザー' },
       json: true
     };
