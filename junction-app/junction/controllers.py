@@ -31,6 +31,10 @@ def create():
     db.session.commit()
     return "OK"
 
+@app.route("/status")
+def status():
+    return render_template('status.html', ticket_id=request.args.get('ticket_id'))
+
 # api chunag
 @app.route("/api/chunag")
 def return_status():

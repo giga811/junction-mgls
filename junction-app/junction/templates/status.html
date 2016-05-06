@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<!-- Form Section -->
+<div id="ticket_id"> {{ ticket_id }} </div>
+<section id="register">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h4>STATUS</h4>
+                <hr class="star-primary">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-2">
+                <img src="img/stopped.png" class="img-responsive" alt="Going 0" id="image0">
+            </div>
+            <div class="col-xs-1">
+                <i class="fa fa-arrow-right fa-2x" aria-hidden="true"></i>
+                CP1
+                <br/>
+            </div>
+            <div class="col-xs-2">
+                <img src="img/going.png" class="img-responsive" alt="Going 1" id="image1">
+            </div>
+            <div class="col-xs-1">
+                <i class="fa fa-arrow-right fa-2x" aria-hidden="true"></i>
+                CP2
+                <br/>
+            </div>
+            <div class="col-xs-2">
+                <img src="img/going.png" class="img-responsive" alt="Going 2" id="image2">
+            </div>
+            <div class="col-xs-1">
+                <i class="fa fa-arrow-right fa-2x" aria-hidden="true"></i>
+                CP3
+                <br/>
+            </div>
+            <div class="col-xs-2">
+                <img src="img/going.png" class="img-responsive" alt="Going 3" id="image3">
+            </div>
+        </div>
+    </div>
+</section>
+<script type="text/javascript">
+    var ajax_call = function() {
+        $.ajax({
+            type: "GET",
+            url: "/api/chunag?ticket_id="+"t123",
+        }).done(function (data) {
+            console.log(data);
+            for (var i=0; i<4; i++)
+                $("#"+i).attr("src", "img/going.png");
+            $("#"+data.last_checkpoint_id).attr("src", "img/stopped.png");
+            if (data.last_checkpoint_id===3){
+                window.alert("ARRIVED!");
+            }
+        });  
+    };
+
+    var interval = 1000 * 30; // where X is your every X minutes
+    setInterval(ajax_call, interval);
+</script>
+{% endblock %}
