@@ -15,4 +15,4 @@ SECRET_KEY = 'junctionmgls' # secret key for app
 # MYSQL_DATABASE_CHARSET = 'utf8'
 # format is dialect+driver://username:password@host:port/database
 # SQLALCHEMY_DATABASE_URI = 'mysql://junction@localhost/junction'
-SQLALCHEMY_DATABASE_URI = 'sqlite+pysqlite://' + DATABASE
+SQLALCHEMY_DATABASE_URI = 'sqlite:///' + DATABASE

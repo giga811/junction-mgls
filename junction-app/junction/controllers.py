@@ -13,7 +13,8 @@ import json
 
 
 # user imports
-from junction import app
+from junction import app, db
+from models import Status
 
 # route for INDEX
 @app.route("/")
@@ -23,7 +24,11 @@ def hello():
 # api
 @app.route("/api/test")
 def get_sensor():
-    return "200"
+    s = Status('t123', 'b234')
+    db.session.add(s)
+    db.session.commit()
+    status = Status.query.first()
+    return status.ticket_id
 
 # tests
 @app.route('/test')
