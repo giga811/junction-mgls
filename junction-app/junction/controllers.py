@@ -21,19 +21,33 @@ from models import Status
 def hello():
     return render_template('index.html')
 
-# api
-@app.route("/api/test")
-def get_sensor():
-    s = Status('t123', 'b234')
-    db.session.add(s)
+# api create
+@app.route("/api/create")
+def create():
+    ticket_id = request.args.get("ticket_id")
+    beacon_id = request.args.get("beacon_id")
+    status = Status(ticket_id=ticket_id, beacon_id=beacon_id)
+    db.session.add(status)
     db.session.commit()
-    status = Status.query.first()
-    return status.ticket_id
+    return "OK"
 
-# tests
-@app.route('/test')
-def test_page():
-    return "ok"
+# api chunag
+@app.route("/api/chunag")
+def return_status():
+    ticket_id = request.args.get('ticket_id')
+    status = Status.query.filter_by(ticket_id=ticket_id).first()
+    data = {'last_checkpoint_id': status.last_checkpoint_id}
+    return json.dumps(data)
+
+# api beacon
+@app.route('/api/beacon')
+def update_data():
+    beacon_id = request.args.get('beacon_id')
+    last_checkpoint_id = request.args.get('last_checkpoint_id')
+    Status.query.filter_by(beacon_id=beacon_id).update({'last_checkpoint_id': last_checkpoint_id}, synchronize_session=False)
+    db.session.commit()
+    status = Status.query.filter_by(beacon_id=beacon_id).first() 
+    return status.last_checkpoint_id
 
 
 ### static file helpers
