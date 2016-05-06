@@ -21,9 +21,9 @@ from models import Status
 def hello():
     return render_template('index.html')
 
-@app.route("/status/:ticketid", methods=['GET'])
+@app.route("/status")
 def status():
-    return render_template('status.html', ticketid=ticketid)
+    return render_template('status.html', ticket_id=request.args.get('ticket_id'))
 
 # api
 @app.route("/api/test")
