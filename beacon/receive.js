@@ -32,10 +32,9 @@ Bleacon.on('discover', function(bleacon) {
 
     // debug
    // console.dir(bleacon);
-   console.log('checkpoint: ' + checkpoint)
-   console.log('uuid: ' + bleacon.uuid);
-   console.log('distance: ' + bleacon.proximity);
-   // sleep.sleep(3);
+   // console.log('checkpoint: ' + checkpoint)
+   // console.log('uuid: ' + bleacon.uuid);
+   // console.log('distance: ' + bleacon.proximity);
 
     var options = {
       uri: 'http://192.168.179.3:5000/api/beacon?last_checkpoint_id=' + checkpoint + '&beacon_id=' + bleacon.uuid,
@@ -44,9 +43,11 @@ Bleacon.on('discover', function(bleacon) {
     };
 
     if (flag && bleacon.proximity == 'immediate' && uuid_list == bleacon.uuid){
-        request.post(options, function(error, response, body){
+        request.get(options, function(error, response, body){
           if (!error && response.statusCode == 200) {
             console.log(bleacon.uuid);
+            console.log(bleacon.proximity);
+            console.log(checkpoint);
             // stop POST-ing
             flag = false;
           } else {
