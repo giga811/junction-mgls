@@ -16,7 +16,7 @@ var ajax_call = function() {
 
         if (dic.last_checkpoint_id==3 && set==false){
             setTimeout(window.alert("PASSENGER ARRIVED!"), 1000);
-            set = true;
+            // set = true;
         }
     });  
 };
