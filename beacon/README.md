@@ -32,7 +32,7 @@ $ node receive.js 1
 ```sh
 # change 'accuracy' value to 0.1, if 'immediate'
 $ vi node_modules/bleacon/lib/bleacon.js
-else if (accuracy < 0.2) {
+else if (accuracy < 0.5) {
     proximity = 'immediate';
 }
 ```
