@@ -2,7 +2,7 @@
 {% block body %}
 
 <!-- Form Section -->
-<div id="ticket_id"> {{ ticket_id }} </div>
+<div id="ticket_id">{{ ticket_id }} </div>
 <section id="register">
     <div class="container">
         <div class="row">
@@ -46,7 +46,7 @@
     var ajax_call = function() {
         $.ajax({
             type: "GET",
-            url: "/api/chunag?ticket_id="+"t123",
+            url: "/api/chunag?ticket_id="+$("#ticket_id").html(),
         }).done(function (data) {
             dic = JSON.parse(data);
             console.log(dic);
@@ -54,7 +54,7 @@
                 $("#image"+i).attr("src", "img/going.png");
             $("#image"+dic.last_checkpoint_id).attr("src", "img/stopped.png");
             if (dic.last_checkpoint_id==3){
-                // window.alert("ARRIVED!");
+                window.alert("ARRIVED!");
             }
         });  
     };
