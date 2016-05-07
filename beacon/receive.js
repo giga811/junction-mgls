@@ -36,7 +36,7 @@ function ledLight(){
 // ==== TEL ====
 function callme(){
   client.makeCall({
-      to: '+818044609996', //コール先のtwilio番号(トライアルアカウントの場合、認証されている番号)
+      to: '+81xxxxxxxx', //コール先のtwilio番号(トライアルアカウントの場合、認証されている番号)
       from: '+815031886957', // 取得したtwilioの番号.
       url: 'http://twimlets.com/echo?Twiml=' + querystring.escape(twiml) //twimlを返すURL
   }, function (err, responseData) {
