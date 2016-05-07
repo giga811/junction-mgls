@@ -9,6 +9,12 @@ $ npm install request
 
 # grove led
 $ npm install jsupm_grove
+
+# twillio
+$ npm install twilio
+
+# querystring
+$ npm install querystring
 ```
 
 ### Set Edison's Bluetooth ON
