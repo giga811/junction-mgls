@@ -460,3 +460,21 @@ footer .footer-below {
 .btn.btn-primary{
     background-color: #CC0000;
 }
+
+.message {
+    margin-top: 100px;
+}
+
+@-webkit-keyframes blink {  
+  0% { color: black; }
+  50% { color: black; }
+  51% { color: green; }
+  100% { color: green; }
+}
+
+.green {
+    color: black;
+    -webkit-animation-name: blink;  
+    -webkit-animation-iteration-count: infinite;  
+    -webkit-animation-duration: 2s; 
+}  

@@ -33,21 +33,41 @@ def api_create():
 
 @app.route("/status")
 def status():
-    return render_template('status.html', ticket_id=request.args.get('ticket_id'))
+    try:
+        ticket_id = request.args.get('ticket_id')
+        status = db.session.query(Status).get(ticket_id)
+        # print status
+        if status is None:
+            flash('Wrong Ticket ID!')
+            return redirect('/')
+    except Exception, e:
+        flash(e)
+    return render_template('status.html', ticket_id=ticket_id)
 
 # register
 @app.route("/register")
 def register():
     return render_template('register.html')
-
+# reset
+@app.route("/reset")
+def reset():
+    Status.query.delete()
+    db.session.commit()
+    flash('Reset success')
+    return redirect(url_for('register'))
 # create
 @app.route("/create")
 def create():
-    ticket_id = request.args.get("ticket_id")
-    beacon_id = request.args.get("beacon_id")
-    status = Status(ticket_id=ticket_id, beacon_id=beacon_id)
-    db.session.add(status)
-    db.session.commit()
+    try:
+        ticket_id = request.args.get("ticket_id")
+        beacon_id = request.args.get("beacon_id")
+        status = Status(ticket_id=ticket_id, beacon_id=beacon_id)
+        db.session.add(status)
+        db.session.commit()
+        flash('Created!')
+    except Exception, e:
+        flash(e)
+        pass
     return render_template('index.html')
 
 # api chunag
@@ -64,11 +84,14 @@ def return_status():
 # api beacon
 @app.route('/api/beacon')
 def update_data():
-    beacon_id = request.args.get('beacon_id')
-    last_checkpoint_id = request.args.get('last_checkpoint_id')
-    Status.query.filter_by(beacon_id=beacon_id).update({'last_checkpoint_id': last_checkpoint_id}, synchronize_session=False)
-    db.session.commit()
-    status = Status.query.filter_by(beacon_id=beacon_id).first() 
+    try:
+        beacon_id = request.args.get('beacon_id')
+        last_checkpoint_id = request.args.get('last_checkpoint_id')
+        Status.query.filter_by(beacon_id=beacon_id).update({'last_checkpoint_id': last_checkpoint_id}, synchronize_session=False)
+        db.session.commit()
+        status = Status.query.filter_by(beacon_id=beacon_id).first() 
+    except Exception, e:
+        pass
     return status.last_checkpoint_id
 
 
