@@ -13,10 +13,10 @@ var flag = true;
 var date1 = new Date();
 var track_interval = 1000;
 
- // Twilio Credentials 
-var accountSid = 'ACca5e81eda5d9445d0a058d2498102041'; 
-var authToken = '359e59814443966ac35cd18be2a8cf84'; 
-var client = require('twilio')(accountSid, authToken); 
+ // Twilio Credentials
+var accountSid = 'ACca5e81eda5d9445d0a058d2498102041';
+var authToken = '359e59814443966ac35cd18be2a8cf84';
+var client = require('twilio')(accountSid, authToken);
 var word = "Hi it is bacon. Your visitor is arrived in airport! Pick your visiotr now!";
 var twiml = '<Response><Say voice="woman" language="en-us">' + word + '</Say></Response>';
 
@@ -36,8 +36,7 @@ function ledLight(){
 // ==== TEL ====
 function callme(){
   client.makeCall({
-   
-      to: '+81xxxxxxxx', //コール先のtwilio番号(トライアルアカウントの場合、認証されている番号)
+      to: '+818044609996', //コール先のtwilio番号(トライアルアカウントの場合、認証されている番号)
       from: '+815031886957', // 取得したtwilioの番号.
       url: 'http://twimlets.com/echo?Twiml=' + querystring.escape(twiml) //twimlを返すURL
   }, function (err, responseData) {
