@@ -16,7 +16,7 @@ var ajax_call = function() {
 
         if (dic.last_checkpoint_id==3 && set==false){
             setTimeout(window.alert("PASSENGER ARRIVED!"), 1000);
-            // set = true;
+            set = true;
         }
     });  
 };
@@ -24,5 +24,5 @@ $(document).ready(function(){
     ajax_call();
     var interval = 1000 * 1; // where X is your every X minutes
     setInterval(ajax_call, interval);
-    setInterval(function (){ set = false;}, 5000);
+    // setInterval(function (){ set = false;}, 5000);
 });
