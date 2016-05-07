@@ -15,26 +15,45 @@
             <div class="col-xs-2">
                 <img src="img/stopped.png" class="img-responsive" alt="Going 0" id="image0">
             </div>
-            <div class="col-xs-1">
-                <i class="fa fa-arrow-right fa-2x" aria-hidden="true"></i>
-                CP1
+            <div class="col-xs-1"  style="text-align: center">
+                {% for i in range(2) %}
+                    <i class="fa fa-arrow-right fa-2x" aria-hidden="true"></i>
+                {% endfor %}
                 <br/>
+                <br/>
+                <img src="img/immig.png" width="50px" >
+                <br/>
+                <br/>
+                Immigration
             </div>
             <div class="col-xs-2">
                 <img src="img/going.png" class="img-responsive" alt="Going 1" id="image1">
             </div>
-            <div class="col-xs-1">
-                <i class="fa fa-arrow-right fa-2x" aria-hidden="true"></i>
-                CP2
+            <div class="col-xs-1"  style="text-align: center">
+                {% for i in range(2) %}
+                    <i class="fa fa-arrow-right fa-2x" aria-hidden="true"></i>
+                {% endfor %}
                 <br/>
+                <br/>
+                <img src="img/bag.png" width="50px" >
+                <br/>
+                <br/>
+                Baggage Claim
+
             </div>
             <div class="col-xs-2">
                 <img src="img/going.png" class="img-responsive" alt="Going 2" id="image2">
             </div>
-            <div class="col-xs-1">
-                <i class="fa fa-arrow-right fa-2x" aria-hidden="true"></i>
-                CP3
+            <div class="col-xs-1" style="text-align: center">
+                {% for i in range(2) %}
+                    <i class="fa fa-arrow-right fa-2x" aria-hidden="true"></i>
+                {% endfor %}
                 <br/>
+                <br/>
+                <img src="img/exit.png" width="50px" >
+                <br/>
+                <br/>
+                EXIT
             </div>
             <div class="col-xs-2">
                 <img src="img/going.png" class="img-responsive" alt="Going 3" id="image3">
@@ -42,26 +61,6 @@
         </div>
     </div>
 </section>
-<script type="text/javascript">
-    var ajax_call = function() {
-        $.ajax({
-            type: "GET",
-            url: "/api/chunag?ticket_id="+$("#ticket_id").html(),
-        }).done(function (data) {
-            dic = JSON.parse(data);
-            console.log(dic);
-            for (var i=0; i<4; i++)
-                $("#image"+i).attr("src", "img/going.png");
-            $("#image"+dic.last_checkpoint_id).attr("src", "img/stopped.png");
-            if (dic.last_checkpoint_id==3){
-                window.alert("ARRIVED!");
-            }
-        });  
-    };
-    $(document).ready(function(){
-        ajax_call();
-        var interval = 1000 * 5; // where X is your every X minutes
-        setInterval(ajax_call, interval);
-    });
-</script>
+
+<script src="js/status.js"></script>
 {% endblock %}

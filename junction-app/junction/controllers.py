@@ -23,24 +23,42 @@ def hello():
 
 # api create
 @app.route("/api/create")
+def api_create():
+    ticket_id = request.args.get("ticket_id")
+    beacon_id = request.args.get("beacon_id")
+    status = Status(ticket_id=ticket_id, beacon_id=beacon_id)
+    db.session.add(status)
+    db.session.commit()
+    return json.dumps({'status': 'success'})
+
+@app.route("/status")
+def status():
+    return render_template('status.html', ticket_id=request.args.get('ticket_id'))
+
+# register
+@app.route("/register")
+def register():
+    return render_template('register.html')
+
+# create
+@app.route("/create")
 def create():
     ticket_id = request.args.get("ticket_id")
     beacon_id = request.args.get("beacon_id")
     status = Status(ticket_id=ticket_id, beacon_id=beacon_id)
     db.session.add(status)
     db.session.commit()
-    return "OK"
-
-@app.route("/status")
-def status():
-    return render_template('status.html', ticket_id=request.args.get('ticket_id'))
+    return render_template('index.html')
 
 # api chunag
 @app.route("/api/chunag")
 def return_status():
     ticket_id = request.args.get('ticket_id')
     status = Status.query.filter_by(ticket_id=ticket_id).first()
-    data = {'last_checkpoint_id': status.last_checkpoint_id}
+    if (not status):
+        data = {'status': 'failed'}
+    else: 
+        data = {'last_checkpoint_id': status.last_checkpoint_id, 'status': 'success'}
     return json.dumps(data)
 
 # api beacon

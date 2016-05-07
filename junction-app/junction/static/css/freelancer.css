@@ -448,3 +448,7 @@ footer .footer-below {
     display: none;
     opacity: 0;
 }
+
+.fa.fa-arrow-right {
+    padding-top: 5vh;
+}
