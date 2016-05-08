@@ -1,0 +1,37 @@
+Junction Asia
+
+Product description:
+
+Airport pickup support using ibeacon.
+Airport pickups often uses name board which is very analog way and hard to use
+
+ibeaconを用いた空港の待ち合わせ支援ツール。
+
+課題:
+空港でホテル、旅行会社、知り合いビジネスパートナーなどと待ち合わせするとき名前を書いた紙を使います。
+けど、空港が混雑し混雑してるときやなまえの下記街がなどすごくアナログな手法である。
+21世紀、空港のあちこちにIoTデバイスが埋め込まれ、誰もがスマホを持つ時代にこの待ち合わせを解決する方法を考えました。
+例: one of the speaker junction asia
+
+製品説明:
+このアプリでは飛行機搭乗者に航空会社からibeaconタグを渡します。
+そのタグを搭乗者はもったまま目的地に行きます。
+ibeaconタグを空港の様々な場所に設置されたセンサーが探知し、現在地を把握しておいて、待ち合わせ人に知らせてあげます。
+ibeaconを使っているため、旅行者はインターネット接続やアプリのインストールなどの手間がない。
+迎え人はWebから来客のチケット番号などで、現在地を検索できる仕組みになっている。
+
+今後の展望:
+航空会社がibeaconを提供することで、搭乗者が安心して迎え人と待ち合わせることができる。
+送り側の家族なども飛行機が無事に到着したかを確認できる。
+空港内での搭乗者のトラッキングができることで、荷物の受取などをスムーズにできる。(big dataß)
+
+開発技術:
+Software
+- Python, Flask
+- Node.js
+- IBM Bluemix
+Device
+- ibeacon
+- Intel Edison
+
+
