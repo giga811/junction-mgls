@@ -74,3 +74,6 @@ target/
 
 # node js modules
 beacon/node_modules/*
+
+# database credentials
+junction-app/settings.py
